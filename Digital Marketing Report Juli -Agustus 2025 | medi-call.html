@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Marketing Report Medi-Call | Juni - Agustus 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Medical Palette -->
+    <!-- Application Structure Plan: A single-page dashboard with top navigation linking to themed sections (Executive Summary, SEO, Traffic, Paid Ads, Leads, Action Plan). The structure breaks down a dense report into manageable, interactive chunks, allowing users to quickly grasp key metrics or dive deep into specific areas without linear scrolling. This flow is designed for both high-level review and detailed analysis. -->
+    <!-- Visualization & Content Choices:
+      - Executive Summary: KPI cards with status icons (HTML/CSS) for at-a-glance metrics and key insights. Goal: Inform.
+      - SEO: Dual-axis line chart (Chart.js) for Clicks/Impressions progress, and bar charts for comparison. Goal: Show Change/Compare.
+      - Traffic: Line chart (Chart.js) to show top channels' trends over one year. Goal: Show Change/Trend.
+      - Paid Ads: Bar charts for campaign-level comparison with percentage change in tooltips. Goal: Compare.
+      - Leads: Grouped bar chart (Chart.js) to visualize performance against targets, and a multi-line chart for conversion rate trends. Goal: Compare/Analyze.
+      - Action Plan: Structured cards organized by priority (HTML/CSS) for clarity. Goal: Organize/Inform.
+      - All data is stored in JS objects for dynamic rendering. Interactions are handled by vanilla JS (tab switching, navigation). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F7F4;
+            color: #333333;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 50vh;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link.active {
+            color: #4A90E2;
+            border-bottom-color: #4A90E2;
+        }
+        .tab-link.active {
+            background-color: #4A90E2;
+            color: white;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <h1 class="text-xl md:text-2xl font-bold text-gray-800">Digital Marketing Report Medi-Call</h1>
+                <nav class="hidden md:flex space-x-4">
+                    <a href="#summary" class="nav-link text-gray-600 hover:text-[#4A90E2] font-medium border-b-2 border-transparent pb-1 active">Executive Summary</a>
+                    <a href="#seo" class="nav-link text-gray-600 hover:text-[#4A90E2] font-medium border-b-2 border-transparent pb-1">SEO</a>
+                    <a href="#traffic" class="nav-link text-gray-600 hover:text-[#4A90E2] font-medium border-b-2 border-transparent pb-1">Traffic</a>
+                    <a href="#paid-ads" class="nav-link text-gray-600 hover:text-[#4A90E2] font-medium border-b-2 border-transparent pb-1">Paid Ads</a>
+                    <a href="#leads" class="nav-link text-gray-600 hover:text-[#4A90E2] font-medium border-b-2 border-transparent pb-1">Leads</a>
+                    <a href="#action-plan" class="nav-link text-gray-600 hover:text-[#4A90E2] font-medium border-b-2 border-transparent pb-1">Action Plan</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <section id="summary" class="mb-12">
+            <h2 class="text-3xl font-bold mb-2 text-gray-800">Executive Summary: Juni - Agustus 2025</h2>
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                <ul class="list-none space-y-3 text-gray-700 font-medium">
+                    <li class="flex items-start"><span class="text-green-500 font-bold mr-2 text-xl">✅</span><div class="flex flex-col"><p><b>Organic Clicks naik 64,4% di Juli, menunjukkan pemulihan signifikan.</b></p><p>Meskipun ada penurunan di Agustus, tren jangka panjang tetap positif.</p></div></li>
+                    <li class="flex items-start"><span class="text-green-500 font-bold mr-2 text-xl">✅</span><div class="flex flex-col"><p><b>Total Leads melonjak +34,1% MoM di Agustus.</b></p><p>Peningkatan ini didorong oleh pertumbuhan leads yang masif dari Meta Ads dan layanan Midwife.</p></div></li>
+                    <li class="flex items-start"><span class="text-yellow-500 font-bold mr-2 text-xl">⚠️</span><div class="flex flex-col"><p><b>Google Ads Leads menurun MoM sebesar -19,9% di Agustus.</b></p><p>Penurunan ini kemungkinan dipicu oleh persaingan yang meningkat di Google Ads, terlihat dari data Auction Insights.</p></div></li>
+                    <li class="flex items-start"><span class="text-red-500 font-bold mr-2 text-xl">❌</span><div class="flex flex-col"><p><b>Biaya Clicks dan Impressions di Google Ads melonjak, sementara CTR dan Posisi Rata-rata menurun.</b></p><p>Hal ini mengindikasikan bahwa kami membayar lebih untuk lalu lintas yang kurang relevan, ini adalah fokus utama optimasi kami.</p></div></li>
+                </ul>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mt-8">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 text-center">
+                    <h3 class="text-lg font-semibold text-gray-500">Organic Clicks (SEO)</h3>
+                    <p class="text-4xl font-bold text-[#4A90E2] mt-2">6.925</p>
+                    <p class="text-sm font-semibold mt-1 flex items-center justify-center text-green-600">✅ +64,4% MoM</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 text-center">
+                    <h3 class="text-lg font-semibold text-gray-500">Leads (Google Ads)</h3>
+                    <p class="text-4xl font-bold text-[#4A90E2] mt-2">1.027</p>
+                    <p class="text-sm font-semibold mt-1 flex items-center justify-center text-green-600">✅ +26,7% MoM</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 text-center">
+                    <h3 class="text-lg font-semibold text-gray-500">Avg. CPL (Google Ads)</h3>
+                    <p class="text-4xl font-bold text-[#4A90E2] mt-2">Rp 18.383</p>
+                    <p class="text-sm font-semibold mt-1 flex items-center justify-center text-green-600">✅ -9,02% vs Juni</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 text-center">
+                    <h3 class="text-lg font-semibold text-gray-500">Leads (Meta Ads)</h3>
+                    <p class="text-4xl font-bold text-[#4A90E2] mt-2">282</p>
+                    <p class="text-sm font-semibold mt-1 flex items-center justify-center text-yellow-500">⚠️ Under Target</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 text-center">
+                    <h3 class="text-lg font-semibold text-gray-500">Total Leads vs Target</h3>
+                    <p class="text-4xl font-bold text-[#4A90E2] mt-2">1.055</p>
+                    <p class="text-sm font-semibold mt-1 flex items-center justify-center text-red-600">❌ -9,6% vs Target</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="seo" class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">SEO</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-xl font-semibold mb-4">SEO Performance Comparison (Juni vs Juli vs Agustus 2025)</h3>
+                    <div class="grid grid-cols-1 gap-8">
+                        <div>
+                            <h4 class="font-semibold text-lg mb-2">Top 5 Queries by Clicks</h4>
+                            <div class="chart-container" style="height:350px; max-height:40vh;">
+                                <canvas id="seoQueriesChart"></canvas>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg mb-2">Top 5 Pages by Clicks</h4>
+                            <div class="chart-container" style="height:350px; max-height:40vh;">
+                                <canvas id="seoPagesChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-xl font-semibold mb-1">SEO Performance Progress (Januari - Agustus 2025)</h3>
+                    <p class="text-gray-600 mb-4">Kami melihat pemulihan `traffic` yang kuat di bulan Juli, dan meskipun ada fluktuasi di Agustus, tren pertumbuhan organik terus berlanjut.</p>
+                    <div class="chart-container mb-8">
+                        <canvas id="seoProgressChart"></canvas>
+                    </div>
+                     <div class="chart-container">
+                        <canvas id="seoPositionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="traffic" class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Traffic Acquisition</h2>
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                <h3 class="text-xl font-semibold mb-1">Organic Traffic Trend (September 2024 - Agustus 2025)</h3>
+                <p class="text-gray-600 mb-4">Grafik ini menunjukkan tren `organic traffic` selama satu tahun terakhir. Terlihat penurunan bertahap yang berhasil kami pulihkan secara signifikan di bulan Juli.</p>
+                <div class="chart-container">
+                    <canvas id="trafficAcquisitionChart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <section id="paid-ads" class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Paid Ads</h2>
+             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-xl font-semibold mb-1">Google Ads Performance (Juni vs Juli vs Agustus 2025)</h3>
+                    <p class="text-gray-600 mb-4">Leads menurun signifikan, dipengaruhi oleh kenaikan biaya dan persaingan yang tinggi.</p>
+                    <div class="chart-container">
+                        <canvas id="googleAdsChart"></canvas>
+                    </div>
+                    <div class="mt-4 space-y-2">
+                        <p class="text-sm text-gray-700"><b>Insight:</b></p>
+                        <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                            <li><span class="font-semibold text-[#4A90E2]">Dokter Search & Pmax:</span> Kampanye `Dokter Search` dan `Pmax Dokter` mengalami penurunan leads, yang sejalan dengan data Auction Insights yang menunjukkan persaingan yang lebih ketat.</li>
+                            <li><span class="font-semibold text-red-600">Homecare & MCU:</span> Penurunan terlihat di kampanye ini, memerlukan strategi bidding yang lebih agresif atau perbaikan landing page.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-xl font-semibold mb-1">Meta Ads Performance (Juni vs Juli vs Agustus 2025)</h3>
+                    <p class="text-gray-600 mb-4">Kuantitas leads Meta Ads melonjak tajam, meskipun kualitasnya masih menjadi perhatian utama.</p>
+                    <div class="chart-container">
+                        <canvas id="metaAdsChart"></canvas>
+                    </div>
+                    <div class="mt-4 space-y-2">
+                        <p class="text-sm text-gray-700"><b>Insight:</b></p>
+                        <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                            <li><span class="font-semibold text-yellow-500">Leads Fisio:</span> Lonjakan leads `Fisioterapi` dari Meta Ads sangat signifikan, namun kami perlu memverifikasi kualitasnya untuk memastikan konversi yang optimal.</li>
+                            <li><span class="font-semibold text-red-600">Campaign Infus:</span> Meskipun ada peningkatan leads, `Cost Per Lead` (CPL) pada kampanye ini masih sangat tinggi, menunjukkan perlu adanya optimasi targeting dan materi iklan yang lebih relevan.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="leads" class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Leads & Business Performance</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-xl font-semibold mb-4">Leads Performance vs Target (Januari - Agustus 2025)</h3>
+                    <div class="chart-container mb-8">
+                        <canvas id="leadsTargetChart"></canvas>
+                    </div>
+                </div>
+                 <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-xl font-semibold mb-4">Leads Conversion Rate per Service (Real Rate)</h3>
+                    <p class="text-gray-600 mb-4">Fluktuasi dalam `conversion rate` menunjukkan adanya perbedaan dalam pencatatan `leads` dan kualitas `leads` yang bervariasi antar layanan.</p>
+                    <div class="chart-container">
+                        <canvas id="conversionRateChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="action-plan">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Action Plan</h2>
+            <div class="space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><b>Google Ads Bidding Strategy:</b> Alihkan strategi `bidding` dari `Maximize Conversions` ke `Target ROAS` (Return on Ad Spend) pada kampanye dengan volume tinggi untuk meningkatkan efisiensi.</li>
+                        <li><b>Meta Ads A/B Testing:</b> Lakukan A/B testing intensif pada `creative assets` dan `audience targeting` untuk kampanye `Fisioterapi` dan `Infus` untuk meningkatkan kualitas leads.</li>
+                        <li><b>Lead Verification Process:</b> Terapkan sistem verifikasi leads yang lebih ketat, terutama dari Meta Ads, untuk mengidentifikasi dan memisahkan leads berkualitas rendah atau spam.</li>
+                        <li><b>SEO Content Focus:</b> Lanjutkan strategi konten yang berfokus pada topik dengan volume pencarian tinggi seperti `biaya layanan` dan `penyakit umum`.</li>
+                        <li><b>Technical SEO Audit:</b> Lakukan audit teknis bulanan untuk memastikan Health Score situs tetap tinggi dan semua isu krusial seperti "Timeout" dan "Title too long" dapat segera diperbaiki.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            const reportData = {
+                seoProgress: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu'],
+                    clicks: [5079, 5092, 4818, 4866, 4585, 4211, 6925, 5196],
+                    impressions: [791079, 644439, 623810, 607718, 697025, 679851, 1024985, 818170],
+                    position: [12.83, 13.47, 14.39, 13.47, 14.89, 16.90, 13.81, 15.42]
+                },
+                seoComparison: {
+                    queries: {
+                        labels: ['gatal pada kulit', 'medicall', 'biaya panti jompo per bulan', 'dokter panggilan terdekat', 'medi call'],
+                        juni: [54, 84, 11, 35, 20],
+                        juli: [76, 85, 28, 56, 33],
+                        agustus: [65, 51, 26, 25, 21]
+                    },
+                    pages: {
+                        labels: ['/blog/biaya-panti...', '/dokter/', '/layanan/perawat-visit/', '/blog/luka-ambeien/', '/layanan/vaksin-rabies/'],
+                        juni: [623, 387, 145, 200, 153],
+                        juli: [896, 497, 273, 202, 208],
+                        agustus: [645, 339, 236, 182, 162]
+                    }
+                },
+                googleAds: {
+                    labels: ['Dokter Search', 'Dokter Pmax', 'HC Search', 'HC Pmax', 'Fisioterapi', 'Nurse Visit', 'MCU'],
+                    juni: [151.5, 186.75, 190.5, 179.75, 37, 28, 37],
+                    juli: [174, 268.82, 174.5, 198.17, 125, 18, 69.5],
+                    agustus: [192, 160.5, 143, 142.5, 112, 29, 43.5]
+                },
+                metaAds: {
+                    labels: ['Juni', 'Juli', 'Agustus'],
+                    data: [27, 282, 592]
+                },
+                leadsTarget: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu'],
+                    target: [1151, 1151, 1151, 1151, 1151, 1151, 1151, 1151],
+                    actual: [1259, 1189, 1082, 1137, 1077, 1166, 1055, 1415]
+                },
+                leadsByService: {
+                    Dokter: 475,
+                    Homecare: 7,
+                    Fisioterapi: 33,
+                    Midwife: 478,
+                    CG: 94,
+                    MCU: 18,
+                    Nurse: 310
+                },
+                conversionRate: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul'],
+                    services: {
+                        'Dokter': [98.91, 97.70, 100.54, 81.29, 63.74, 80.10, 58.73],
+                        'Home Care': [23.70, 214.80, 142.53, 60.48, 72.95, 65.46, 52.44],
+                        'Caregiver': [94.87, 124.06, 112.56, 81.00, 107.53, 216.03, 170.79],
+                        'Fisioterapi': [203.41, 218.46, 226.09, 220.69, 316.83, 183.67, 147.89],
+                        'Nurse Visit': [154.42, 144.00, 203.64, 146.85, 132.43, 145.36, 126.45],
+                        'MCU': [66.96, 61.54, 72.70, 61.17, 64.42, 91.04, 70.59]
+                    }
+                },
+                trafficAcquisition: {
+                    labels: ['Sep 24', 'Okt 24', 'Nov 24', 'Des 24', 'Jan 25', 'Feb 25', 'Mar 25', 'Apr 25', 'Mei 25', 'Jun 25', 'Jul 25', 'Agu 25'],
+                    organicSearch: [19500, 18000, 16000, 15000, 14000, 12000, 10500, 11000, 12500, 16000, 17500, 15500],
+                    paidSearch: [4000, 4200, 3800, 3500, 4500, 4200, 3900, 4100, 4300, 4000, 4200, 4500],
+                    crossNetwork: [3000, 3200, 2900, 2800, 3500, 3300, 3100, 3000, 3200, 3400, 3000, 3100]
+                }
+            };
+            
+            const calculatePercentageChange = (previous, current) => {
+                if (previous === 0) return current > 0 ? '+∞%' : '0%';
+                const change = ((current - previous) / previous) * 100;
+                return `${change > 0 ? '+' : ''}${change.toFixed(1)}%`;
+            };
+
+            const chartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#e5e7eb'
+                        }
+                    }
+                }
+            };
+            
+            const colors = ['#4A90E2', '#50E3C2', '#F5A623', '#D0021B', '#BD10E0', '#417505', '#9013FE'];
+            
+            const createBarChart = (ctx, data, options) => new Chart(ctx, { type: 'bar', data: data, options: options });
+            const createLineChart = (ctx, data, options) => new Chart(ctx, { type: 'line', data: data, options: options });
+            
+            const createComparisonTooltip = () => ({
+                mode: 'index',
+                intersect: false,
+                callbacks: {
+                    afterBody: function(context) {
+                        if (context.length < 2) return null;
+                        const previousData = context[0].raw;
+                        const currentData = context[1].raw;
+                        return `Perubahan: ${calculatePercentageChange(previousData, currentData)}`;
+                    }
+                }
+            });
+
+            const comparisonChartOptions = {
+              ...chartOptions,
+              plugins: {
+                ...chartOptions.plugins,
+                tooltip: createComparisonTooltip()
+              }
+            };
+
+            createLineChart(document.getElementById('seoProgressChart'), {
+                labels: reportData.seoProgress.labels,
+                datasets: [{
+                    label: 'Clicks',
+                    data: reportData.seoProgress.clicks,
+                    borderColor: '#4A90E2',
+                    backgroundColor: 'rgba(74, 144, 226, 0.1)',
+                    yAxisID: 'y',
+                    tension: 0.3,
+                    fill: true
+                }, {
+                    label: 'Impressions',
+                    data: reportData.seoProgress.impressions,
+                    borderColor: '#50E3C2',
+                    backgroundColor: 'rgba(80, 227, 194, 0.1)',
+                    yAxisID: 'y1',
+                    tension: 0.3,
+                    fill: true
+                }]
+            }, { ...chartOptions, scales: {
+                x: { grid: { display: false } },
+                y: { type: 'linear', display: true, position: 'left', title: { display: true, text: 'Clicks' } },
+                y1: { type: 'linear', display: true, position: 'right', title: { display: true, text: 'Impressions' }, grid: { drawOnChartArea: false } }
+            }});
+
+            createLineChart(document.getElementById('seoPositionChart'), {
+                labels: reportData.seoProgress.labels,
+                datasets: [{
+                    label: 'Average Position',
+                    data: reportData.seoProgress.position,
+                    borderColor: '#F5A623',
+                    backgroundColor: 'rgba(245, 166, 35, 0.1)',
+                    tension: 0.3,
+                    fill: true
+                }]
+            }, { ...chartOptions, scales: { ...chartOptions.scales, y: { ...chartOptions.scales.y, reverse: true, title: {display: true, text: 'Position (lower is better)'} } } });
+            
+            createBarChart(document.getElementById('seoQueriesChart'), {
+                labels: reportData.seoComparison.queries.labels,
+                datasets: [
+                    { label: 'Juni', data: reportData.seoComparison.queries.juni, backgroundColor: '#c7d2fe' },
+                    { label: 'Juli', data: reportData.seoComparison.queries.juli, backgroundColor: '#a5b4fc' },
+                    { label: 'Agustus', data: reportData.seoComparison.queries.agustus, backgroundColor: '#4A90E2' }
+                ]
+            }, comparisonChartOptions);
+
+            createBarChart(document.getElementById('seoPagesChart'), {
+                labels: reportData.seoComparison.pages.labels,
+                datasets: [
+                    { label: 'Juni', data: reportData.seoComparison.pages.juni, backgroundColor: '#c7d2fe' },
+                    { label: 'Juli', data: reportData.seoComparison.pages.juli, backgroundColor: '#a5b4fc' },
+                    { label: 'Agustus', data: reportData.seoComparison.pages.agustus, backgroundColor: '#4A90E2' }
+                ]
+            }, comparisonChartOptions);
+
+             createLineChart(document.getElementById('trafficAcquisitionChart'), {
+                labels: reportData.trafficAcquisition.labels,
+                datasets: [{
+                    label: 'Organic Search',
+                    data: reportData.trafficAcquisition.organicSearch,
+                    borderColor: colors[0],
+                    backgroundColor: 'rgba(74, 144, 226, 0.1)',
+                    tension: 0.3,
+                    fill: true
+                }, {
+                    label: 'Paid Search',
+                    data: reportData.trafficAcquisition.paidSearch,
+                    borderColor: colors[1],
+                    backgroundColor: 'rgba(80, 227, 194, 0.1)',
+                    tension: 0.3,
+                    fill: true
+                }, {
+                    label: 'Cross-network',
+                    data: reportData.trafficAcquisition.crossNetwork,
+                    borderColor: colors[2],
+                    backgroundColor: 'rgba(245, 166, 35, 0.1)',
+                    tension: 0.3,
+                    fill: true
+                }]
+            }, chartOptions);
+
+            createBarChart(document.getElementById('googleAdsChart'), {
+                labels: reportData.googleAds.labels,
+                datasets: [
+                    { label: 'Juni', data: reportData.googleAds.juni, backgroundColor: '#c7d2fe' },
+                    { label: 'Juli', data: reportData.googleAds.juli, backgroundColor: '#a5b4fc' },
+                    { label: 'Agustus', data: reportData.googleAds.agustus, backgroundColor: '#4A90E2' }
+                ]
+            }, comparisonChartOptions);
+            
+            createBarChart(document.getElementById('metaAdsChart'), {
+                labels: reportData.metaAds.labels,
+                datasets: [
+                    { label: 'Leads',
+                      data: reportData.metaAds.data,
+                      backgroundColor: ['#c7d2fe', '#a5b4fc', '#4A90E2']
+                    }
+                ]
+            }, comparisonChartOptions);
+            
+            createBarChart(document.getElementById('leadsTargetChart'), {
+                labels: reportData.leadsTarget.labels,
+                datasets: [
+                    { label: 'Target Leads', data: reportData.leadsTarget.target, backgroundColor: '#a5b4fc' },
+                    { label: 'Actual Leads', data: reportData.leadsTarget.actual, backgroundColor: '#4A90E2' }
+                ]
+            }, chartOptions);
+
+            createLineChart(document.getElementById('conversionRateChart'), {
+                labels: reportData.conversionRate.labels,
+                datasets: Object.keys(reportData.conversionRate.services).map((service, index) => ({
+                    label: service,
+                    data: reportData.conversionRate.services[service],
+                    borderColor: colors[index % colors.length],
+                    backgroundColor: 'transparent',
+                    tension: 0.3
+                }))
+            }, {...chartOptions, plugins: {...chartOptions.plugins, tooltip: {...chartOptions.plugins.tooltip, callbacks: { label: (context) => `${context.dataset.label}: ${context.raw.toFixed(2)}%` }}}}
+            );
+
+            function setupTabs(tabClass, contentClass) {
+                const tabs = document.querySelectorAll(`.${tabClass}`);
+                const contents = document.querySelectorAll(`.${contentClass}`);
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        tabs.forEach(t => t.classList.remove('active'));
+                        tab.classList.add('active');
+                        const targetId = tab.dataset.target;
+                        contents.forEach(content => {
+                            if (content.id === targetId) {
+                                content.classList.remove('hidden');
+                            } else {
+                                content.classList.add('hidden');
+                            }
+                        });
+                    });
+                });
+            }
+
+            setupTabs('seo-tab', 'seo-content');
+            setupTabs('ads-tab', 'ads-content');
+            
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('main section');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 80) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
+
